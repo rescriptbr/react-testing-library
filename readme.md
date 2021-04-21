@@ -1,19 +1,19 @@
-# bs-react-testing-library &middot; [![Build Status][actions-image]][actions-url] [![npm][npm-image]][npm-url] [![Codecov][codecov-image]][codecov-url]
+# @rescriptbr/react-testing-library &middot; 
 
-> [BuckleScript](//github.com/BuckleScript/bucklescript) bindings for [react-testing-library](//github.com/kentcdodds/react-testing-library).
+> [ReScript](https://rescript-lang.org) bindings for [react-testing-library](https://github.com/testing-library/react-testing-library).
 
 ## Documentation
 
-[**Read the docs**](//testing-library.com/docs/bs-react-testing-library/intro) | [Edit the docs](//github.com/alexkrolick/testing-library-docs)
+The documentions is WIP, see [`src/__tests__`](src/__tests__) for some examples.
 
 ## Installation
 
 ```sh
-$ yarn add --dev bs-react-testing-library
+$ yarn add --dev @rescriptbr/react-testing-library
 
 # or..
 
-$ npm install --save-dev bs-react-testing-library
+$ npm install --save-dev @rescriptbr/react-testing-library
 ```
 
 ## Usage
@@ -23,7 +23,7 @@ $ npm install --save-dev bs-react-testing-library
 ```json
 {
   "bs-dev-dependencies": [
-    "bs-react-testing-library"
+    "@rescriptbr/react-testing-library"
   ]
 }
 ```
@@ -31,21 +31,21 @@ $ npm install --save-dev bs-react-testing-library
 #### With [`bs-jest`](//github.com/glennsl/bs-jest)
 
 ```ocaml
-/* Component_test.re */
+/* Component_Test.res */
 
-open Jest;
-open Expect;
-open ReactTestingLibrary;
+open Jest
+open Expect
+open ReactTestingLibrary
 
 test("Component renders", () =>
-  <div style=ReactDOMRe.Style.make(~color="rebeccapurple", ())>
-    <h1> {ReasonReact.string("Heading")} </h1>
+  <div style=ReactDOM.Style.make(~color="rebeccapurple", ())>
+    <h1> {React.string("Heading")} </h1>
   </div>
   |> render
   |> container
   |> expect
   |> toMatchSnapshot
-);
+)
 ```
 
 ## Examples
@@ -76,20 +76,7 @@ $ yarn test
 
 > [Full Change Log](changelog.md)
 
-### [v0.8.0](https://github.com/wyze/bs-react-testing-library/releases/tag/v0.8.0) (2020-10-21)
-
-* Upgrade to latest dependencies ([@wyze](https://github.com/wyze) in [#27](https://github.com/wyze/bs-react-testing-library/pull/27))
-* Add sponsor button ([@wyze](https://github.com/wyze) in [c69f028](https://github.com/wyze/bs-react-testing-library/commit/c69f028))
-
 ## License
 
-MIT © [Neil Kistner](https://neilkistner.com)
+MIT ©
 
-[actions-image]: https://img.shields.io/github/workflow/status/wyze/bs-react-testing-library/CI.svg?style=flat-square
-[actions-url]: https://github.com/wyze/bs-react-testing-library/actions
-
-[npm-image]: https://img.shields.io/npm/v/bs-react-testing-library.svg?style=flat-square
-[npm-url]: https://npm.im/bs-react-testing-library
-
-[codecov-image]: https://img.shields.io/codecov/c/github/wyze/bs-react-testing-library.svg?style=flat-square
-[codecov-url]: https://codecov.io/github/wyze/bs-react-testing-library
