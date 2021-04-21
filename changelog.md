@@ -1,5 +1,9 @@
 ## Change Log
 
+
+### [v1.0.0](https://github.com/rescriptbr/react-testing-library/releases/tag/v1.0.0) (2021-04-21)
+* Migrating from `reason-react` to `@rescript/react`
+
 ### [v0.8.0](https://github.com/wyze/bs-react-testing-library/releases/tag/v0.8.0) (2020-10-21)
 
 * Upgrade to latest dependencies ([@wyze](https://github.com/wyze) in [#27](https://github.com/wyze/bs-react-testing-library/pull/27))
