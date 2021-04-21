@@ -1,4 +1,4 @@
-# @rescriptbr/react-testing-library &middot; 
+# @rescriptbr/react-testing-library
 
 > [ReScript](https://rescript-lang.org) bindings for [react-testing-library](https://github.com/testing-library/react-testing-library).
 
