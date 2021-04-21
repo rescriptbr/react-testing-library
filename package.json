@@ -20,12 +20,8 @@
     "clean:project": "rimraf _coverage lib .merlin *.coverage",
     "jest": "jest --setupTestFrameworkScriptFile=./setupTests.js",
     "postversion": "github-release",
-    "prebuild": "yarn clean",
     "pretest": "yarn build",
-    "preversion": "yarn build",
-    "test": "yarn jest",
-    "test:coverage": "BISECT_ENABLE=yes yarn test",
-    "version": "changelog"
+    "test": "yarn jest"
   },
   "keywords": [
     "bucklescript",
@@ -44,7 +40,6 @@
   "devDependencies": {
     "@glennsl/bs-jest": "^0.5.1",
     "@sheerun/mutationobserver-shim": "^0.3.3",
-    "@wyze/changelog": "^1.0.0",
     "@wyze/github-release": "^1.1.1",
     "bisect_ppx": "^2.5.0",
     "bs-platform": "^8.4.2",
