@@ -4,7 +4,7 @@
 
 ## Documentation
 
-The documentions is WIP, see [`src/__tests__`](src/__tests__) for some examples.
+The documentation is WIP, see [`src/__tests__`](src/__tests__) for some examples.
 
 ## Installation
 
