@@ -15,7 +15,7 @@
   },
   "suffix": ".bs.js",
   "bs-dependencies": ["bs-dom-testing-library", "@rescript/react"],
-  "bs-dev-dependencies": ["@glennsl/bs-jest", "bisect_ppx"],
+  "bs-dev-dependencies": ["@glennsl/bs-jest"],
   "sources": [
     {
       "dir": "src",
