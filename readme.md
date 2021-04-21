@@ -31,8 +31,6 @@ $ npm install --save-dev @rescriptbr/react-testing-library
 #### With [`bs-jest`](//github.com/glennsl/bs-jest)
 
 ```ocaml
-/* Component_Test.res */
-
 open Jest
 open Expect
 open ReactTestingLibrary
