@@ -78,6 +78,10 @@ $ yarn test
 
 * Migrating from reason syntax to rescript and reason-react to @rescript/react ([@vmarcosp](https://github.com/vmarcosp) in [f77a430](https://github.com/rescriptbr/react-testing-library/commit/f77a430))
 
+## Credits
+
+See [CREDITS.md](CREDITS.md)
+
 ## License
 
 MIT ©
