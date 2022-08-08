@@ -19,7 +19,8 @@
     "clean:bsb": "bsb -clean-world",
     "jest": "jest --setupTestFrameworkScriptFile=./setupTests.js",
     "pretest": "yarn build",
-    "test": "yarn jest"
+    "test": "yarn jest",
+    "test:watch": "yarn jest --watch"
   },
   "keywords": [
     "bucklescript",
