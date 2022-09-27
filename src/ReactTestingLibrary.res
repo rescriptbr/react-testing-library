@@ -1,9 +1,44 @@
 type renderResult
 type screen
 type fireEvent
+type queries
+type renderOptions = {
+  "container": Js.undefined<Dom.element>,
+  "baseElement": Js.undefined<Dom.element>,
+  "hydrate": Js.undefined<bool>,
+  "wrapper": Js.undefined<Dom.element>,
+  "queries": Js.undefined<queries>,
+}
+
+@module("@testing-library/react")
+external cleanup: unit => unit = "cleanup"
+
+@module("@testing-library/react")
+external _act: (unit => Js.undefined<Js.Promise.t<'a>>) => unit = "act"
+
+let act = callback =>
+  _act(() => {
+    callback()
+
+    // (work-around) BuckleScript compiles `unit` to `0`, this will cause a warning as following:
+    // Warning: The callback passed to act(...) function must return undefined, or a Promise.
+    Js.Undefined.empty
+  })
 
 @module("@testing-library/react")
 external render: React.element => renderResult = "render"
+
+@get external container: renderResult => Dom.element = "container"
+
+@get external baseElement: renderResult => Dom.element = "baseElement"
+
+@send external unmount: renderResult => bool = "unmount"
+
+@send
+external rerender: (renderResult, React.element) => unit = "rerender"
+
+@send
+external asFragment: renderResult => Dom.element = "asFragment"
 
 @module("@testing-library/react")
 external screen: screen = "screen"
@@ -14,11 +49,8 @@ external fireEvent: fireEvent = "fireEvent"
 @module("@testing-library/react")
 external waitFor: (unit => 'a) => Promise.t<'a> = "waitFor"
 
-@get
-external container: renderResult => Dom.element = "container"
-
 // TODO: re-add options
-// render result functions
+// ByLabelText
 @send
 external getByLabelText: (
   renderResult,
@@ -55,6 +87,7 @@ external findAllByLabelText: (
   ~matcher: @unwrap [#Str(string) | #RegExp(Js.Re.t) | #Func((string, Dom.element) => bool)],
 ) => Promise.t<array<Dom.element>> = "findAllByLabelText"
 
+// ByPlaceholderText
 @send
 external getByPlaceholderText: (
   renderResult,
@@ -129,7 +162,6 @@ external findAllByText: (
 ) => Promise.t<array<Dom.element>> = "findAllByText"
 
 // ByAltText
-
 @send
 external getByAltText: (
   renderResult,
@@ -167,7 +199,6 @@ external findAllByAltText: (
 ) => Promise.t<array<Dom.element>> = "findAllByAltText"
 
 // ByTitle
-
 @send
 external getByTitle: (
   renderResult,
@@ -314,6 +345,12 @@ external findAllByTestId: (
   renderResult,
   ~matcher: @unwrap [#Str(string) | #RegExp(Js.Re.t) | #Func((string, Dom.element) => bool)],
 ) => Promise.t<array<Dom.element>> = "findAllByTestId"
+
+@send
+external _debug: (renderResult, Js.undefined<Dom.element>, Js.undefined<int>) => unit = "debug"
+
+let debug = (renderResult, ~el=?, ~maxLengthToPrint=?, ()) =>
+  renderResult->_debug(Js.Undefined.fromOption(el), Js.Undefined.fromOption(maxLengthToPrint))
 
 // fireEvent functions
 @send external click: (fireEvent, Dom.element) => unit = "click"

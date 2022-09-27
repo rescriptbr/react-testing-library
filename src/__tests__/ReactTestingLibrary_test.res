@@ -411,89 +411,84 @@ describe("ReactTestingLibrary", (. ()) => {
     )
   })
 
-  //   describe("debug", () => {
-  //     beforeEach(() => {
-  //       let _ = %raw(`jest.spyOn(console, 'log').mockImplementation(() => {})`)
-  //     })
+  describe("debug", (. ()) => {
+    beforeEach((. ()) => {
+      let _ = %raw(`jest.spyOn(console, 'log').mockImplementation(() => {})`)
+    })
 
-  //     afterEach(() => {
-  //       let _ = %raw(`console.log.mockRestore()`)
-  //     })
+    afterEach((. ()) => {
+      let _ = %raw(`console.log.mockRestore()`)
+    })
 
-  //     test("works", () => {
-  //       let _ = element->render->debug()
+    test("works", (. ()) => {
+      let _ = element->render->debug()
 
-  //       let _ = %raw(`expect(console.log).toHaveBeenCalledTimes(1)`)
-  //       let _ = %raw(`
-  //         expect(console.log).toHaveBeenCalledWith(
-  //           expect.stringContaining('Heading')
-  //         )
-  //       `)
+      let _ = %raw(`expect(console.log).toHaveBeenCalledTimes(1)`)
+      let _ = %raw(`
+          expect(console.log).toHaveBeenCalledWith(
+            expect.stringContaining('Heading')
+          )
+        `)
+    })
 
-  //       pass
-  //     })
+    test("works with element argument", (. ()) => {
+      let result = element->render
+      let el = result->container->firstChild->unsafeAsElement
 
-  //     test("works with element argument", () => {
-  //       let result = element->render
-  //       let el = result->container->firstChild->unsafeAsElement
+      let _ = result->debug(~el, ())
 
-  //       let _ = result->debug(~el, ())
+      let _ = %raw(`expect(console.log).toHaveBeenCalledTimes(1)`)
+      let _ = %raw(`
+          expect(console.log).toHaveBeenCalledWith(
+            expect.stringContaining('Heading')
+          )
+        `)
+    })
 
-  //       let _ = %raw(`expect(console.log).toHaveBeenCalledTimes(1)`)
-  //       let _ = %raw(`
-  //         expect(console.log).toHaveBeenCalledWith(
-  //           expect.stringContaining('Heading')
-  //         )
-  //       `)
+    test("works with maxLengthToPrint argument", (. ()) => {
+      let result = element->render
+      let el = result->container->firstChild->unsafeAsElement
 
-  //       pass
-  //     })
+      let _ = result->debug(~el, ~maxLengthToPrint=25, ())
 
-  //     test("works with maxLengthToPrint argument", () => {
-  //       let result = element->render
-  //       let el = result->container->firstChild->unsafeAsElement
+      let _ = %raw(`expect(console.log).toHaveBeenCalledTimes(1)`)
+      let _ = %raw(`
+          expect(console.log).toHaveBeenCalledWith(
+            expect.stringContaining('sty...')
+          )
+        `)
+    })
+  })
 
-  //       let _ = result->debug(~el, ~maxLengthToPrint=25, ())
+  test("rerender works", (. ()) => {
+    let result = render(<Greeting message="hi" />)
+    let check = text => result->container->firstChild->innerHTML->expect->toEqual(text)
 
-  //       let _ = %raw(`expect(console.log).toHaveBeenCalledTimes(1)`)
-  //       let _ = %raw(`
-  //         expect(console.log).toHaveBeenCalledWith(
-  //           expect.stringContaining('sty...')
-  //         )
-  //       `)
+    check("hi")->ignore
 
-  //       pass
-  //     })
-  //   })
+    result->rerender(<Greeting message="hey" />)
 
-  //   test("rerender works", () => {
-  //     let result = render(<Greeting message="hi" />)
-  //     let check = text => result->container->firstChild->innerHTML->expect->toEqual(text)
+    check("hey")
+  })
 
-  //     check("hi")->ignore
+  test("asFragment works", (. ()) => element->render->asFragment->expect->toMatchSnapshot)
 
-  //     result->rerender(<Greeting message="hey" />)
+  test("act works", (. ()) => {
+    let result = <Counter />->render
 
-  //     check("hey")
-  //   })
+    act(() => {
+      let el = result->getByText(~matcher=#Str("+"))
+      fireEvent->click(el)->ignore
+    })
 
-  //   test("asFragment works", () => element->render->asFragment()->expect->toMatchSnapshot)
+    result->getByText(~matcher=#Str("Count: 1"))->expect->toMatchSnapshot
+  })
 
-  //   test("act works", () => {
-  //     let result = <Counter />->render
+  testAsync("Cleaunp, (element not found)", (. ()) => {
+    let result = element->render
 
-  //     act(() => result->getByText(~matcher=#Str("+"))->FireEvent.click->ignore)
+    cleanup()
 
-  //     result->getByText(~matcher=#Str("Count: 1"))->expect->toMatchSnapshot
-  //   })
-
-  //   testAsync("Cleaunp, (element not found)", () => {
-  //     let result = element->render
-
-  //     cleanup()
-
-  //     Promise.resolve(
-  //       result->queryByTestId(~matcher=#Str("h1-heading"))->expect->toMatchSnapshot,
-  //     )
-  //   })
+    Promise.resolve(result->queryByTestId(~matcher=#Str("h1-heading"))->expect->toMatchSnapshot)
+  })
 })
