@@ -18,8 +18,15 @@ type renderOptions = {
 external cleanup: unit => unit = "cleanup"
 
 let act: (unit => unit) => unit
-@module("@testing-library/react")
-external render: React.element => renderResult = "render"
+
+let render: (
+  ~baseElement: Dom.element=?,
+  ~container: Dom.element=?,
+  ~hydrate: bool=?,
+  ~wrapper: Dom.element=?,
+  ~queries: queries=?,
+  React.element,
+) => renderResult
 
 @get external container: renderResult => Dom.element = "container"
 

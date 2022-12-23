@@ -26,7 +26,26 @@ let act = callback =>
   })
 
 @module("@testing-library/react")
-external render: React.element => renderResult = "render"
+external _render: (React.element, renderOptions) => renderResult = "render"
+
+let render = (~baseElement=?, ~container=?, ~hydrate=?, ~wrapper=?, ~queries=?, element) => {
+  let baseElement_ = switch container {
+  | Some(container') => Js.Undefined.return(container')
+  | None => Js.Undefined.fromOption(baseElement)
+  }
+  let container_ = Js.Undefined.fromOption(container)
+
+  _render(
+    element,
+    {
+      "baseElement": baseElement_,
+      "container": container_,
+      "hydrate": Js.Undefined.fromOption(hydrate),
+      "wrapper": Js.Undefined.fromOption(wrapper),
+      "queries": Js.Undefined.fromOption(queries),
+    },
+  )
+}
 
 @get external container: renderResult => Dom.element = "container"
 
