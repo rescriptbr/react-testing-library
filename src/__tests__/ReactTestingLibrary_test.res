@@ -53,40 +53,40 @@ describe("ReactTestingLibrary", (. ()) => {
       </div>
 
     test("getByLabelText works", (. ()) =>
-      labelText->render->getByLabelText(~matcher=#Str("Username"))->expect->toMatchSnapshot
+      labelText->render->getByLabelText(~matcher=#Str("Username"), ())->expect->toMatchSnapshot
     )
 
     test("getAllByLabelText works", (. ()) =>
-      labelText->render->getAllByLabelText(~matcher=#Str("Username"))->expect->toMatchSnapshot
+      labelText->render->getAllByLabelText(~matcher=#Str("Username"), ())->expect->toMatchSnapshot
     )
 
     test("queryByLabelText works", (. ()) =>
-      labelText->render->queryByLabelText(~matcher=#Str("Username"))->expect->toMatchSnapshot
+      labelText->render->queryByLabelText(~matcher=#Str("Username"), ())->expect->toMatchSnapshot
     )
 
     test("queryByLabelText works (element not found)", (. ()) =>
       labelText
       ->render
-      ->queryByLabelText(~matcher=#Str("!@#$Username!@#$"))
+      ->queryByLabelText(~matcher=#Str("!@#$Username!@#$"), ())
       ->expect
       ->toMatchSnapshot
     )
 
     test("queryAllByLabelText works", (. ()) =>
-      labelText->render->queryAllByLabelText(~matcher=#Str("Username"))->expect->toMatchSnapshot
+      labelText->render->queryAllByLabelText(~matcher=#Str("Username"), ())->expect->toMatchSnapshot
     )
 
     testAsync("findByLabelText works", (. ()) =>
       labelText
       ->render
-      ->findByLabelText(~matcher=#Str("Username"))
+      ->findByLabelText(~matcher=#Str("Username"), ())
       ->Promise.thenResolve(result => result->expect->toMatchSnapshot)
     )
 
     testAsync("findAllByLabelText works", (. ()) =>
       labelText
       ->render
-      ->findAllByLabelText(~matcher=#Str("Username"))
+      ->findAllByLabelText(~matcher=#Str("Username"), ())
       ->Promise.thenResolve(result => result->expect->toMatchSnapshot)
     )
   })
@@ -99,7 +99,7 @@ describe("ReactTestingLibrary", (. ()) => {
     test("getByPlaceholderText works", (. ()) =>
       placeholderText
       ->render
-      ->getByPlaceholderText(~matcher=#Str("Username"))
+      ->getByPlaceholderText(~matcher=#Str("Username"), ())
       ->expect
       ->toMatchSnapshot
     )
@@ -107,7 +107,7 @@ describe("ReactTestingLibrary", (. ()) => {
     test("getAllByPlaceholderText works", (. ()) =>
       placeholderText
       ->render
-      ->getAllByPlaceholderText(~matcher=#Str("Username"))
+      ->getAllByPlaceholderText(~matcher=#Str("Username"), ())
       ->expect
       ->toMatchSnapshot
     )
@@ -115,7 +115,7 @@ describe("ReactTestingLibrary", (. ()) => {
     test("queryByPlaceholderText works", (. ()) =>
       placeholderText
       ->render
-      ->queryByPlaceholderText(~matcher=#Str("Username"))
+      ->queryByPlaceholderText(~matcher=#Str("Username"), ())
       ->expect
       ->toMatchSnapshot
     )
@@ -123,7 +123,7 @@ describe("ReactTestingLibrary", (. ()) => {
     test("queryByPlaceholderText works (element not found)", (. ()) =>
       placeholderText
       ->render
-      ->queryByPlaceholderText(~matcher=#Str("!@#$Username!@#$"))
+      ->queryByPlaceholderText(~matcher=#Str("!@#$Username!@#$"), ())
       ->expect
       ->toMatchSnapshot
     )
@@ -131,7 +131,7 @@ describe("ReactTestingLibrary", (. ()) => {
     test("queryAllByPlaceholderText works", (. ()) =>
       placeholderText
       ->render
-      ->queryAllByPlaceholderText(~matcher=#Str("Username"))
+      ->queryAllByPlaceholderText(~matcher=#Str("Username"), ())
       ->expect
       ->toMatchSnapshot
     )
@@ -139,14 +139,14 @@ describe("ReactTestingLibrary", (. ()) => {
     testAsync("findByPlaceholderText works", (. ()) =>
       placeholderText
       ->render
-      ->findByPlaceholderText(~matcher=#Str("Username"))
+      ->findByPlaceholderText(~matcher=#Str("Username"), ())
       ->Promise.thenResolve(result => result->expect->toMatchSnapshot)
     )
 
     testAsync("findAllByPlaceholderText works", (. ()) =>
       placeholderText
       ->render
-      ->findAllByPlaceholderText(~matcher=#Str("Username"))
+      ->findAllByPlaceholderText(~matcher=#Str("Username"), ())
       ->Promise.thenResolve(result => result->expect->toMatchSnapshot)
     )
   })
@@ -156,36 +156,36 @@ describe("ReactTestingLibrary", (. ()) => {
     let text = <div> <a href="/about"> {React.string(j`About ℹ️`)} </a> </div>
 
     test("getByText works", (. ()) =>
-      text->render->getByText(~matcher=#Str(j`About ℹ️`))->expect->toMatchSnapshot
+      text->render->getByText(~matcher=#Str(j`About ℹ️`), ())->expect->toMatchSnapshot
     )
 
     test("getAllByText works", (. ()) =>
-      text->render->getAllByText(~matcher=#Str(j`About ℹ️`))->expect->toMatchSnapshot
+      text->render->getAllByText(~matcher=#Str(j`About ℹ️`), ())->expect->toMatchSnapshot
     )
 
     test("queryByText works", (. ()) =>
-      text->render->queryByText(~matcher=#Str(j`About ℹ️`))->expect->toMatchSnapshot
+      text->render->queryByText(~matcher=#Str(j`About ℹ️`), ())->expect->toMatchSnapshot
     )
 
     test("queryByText works (element not found)", (. ()) =>
-      text->render->queryByText(~matcher=#Str(j`!@#About ℹ️!@#`))->expect->toMatchSnapshot
+      text->render->queryByText(~matcher=#Str(j`!@#About ℹ️!@#`), ())->expect->toMatchSnapshot
     )
 
     test("queryAllByText works", (. ()) =>
-      text->render->queryAllByText(~matcher=#Str(j`About ℹ️`))->expect->toMatchSnapshot
+      text->render->queryAllByText(~matcher=#Str(j`About ℹ️`), ())->expect->toMatchSnapshot
     )
 
     testAsync("findByText works", (. ()) =>
       text
       ->render
-      ->findByText(~matcher=#Str(j`About ℹ️`))
+      ->findByText(~matcher=#Str(j`About ℹ️`), ())
       ->Promise.thenResolve(result => result->expect->toMatchSnapshot)
     )
 
     testAsync("findAllByText works", (. ()) =>
       text
       ->render
-      ->findAllByText(~matcher=#Str(j`About ℹ️`))
+      ->findAllByText(~matcher=#Str(j`About ℹ️`), ())
       ->Promise.thenResolve(result => result->expect->toMatchSnapshot)
     )
   })
@@ -199,13 +199,17 @@ describe("ReactTestingLibrary", (. ()) => {
       </div>
 
     test("getByAltText works", (. ()) =>
-      altText->render->getByAltText(~matcher=#Str("Incredibles 2 Poster"))->expect->toMatchSnapshot
+      altText
+      ->render
+      ->getByAltText(~matcher=#Str("Incredibles 2 Poster"), ())
+      ->expect
+      ->toMatchSnapshot
     )
 
     test("getAllByAltText works", (. ()) =>
       altText
       ->render
-      ->getAllByAltText(~matcher=#Str("Incredibles 2 Poster"))
+      ->getAllByAltText(~matcher=#Str("Incredibles 2 Poster"), ())
       ->expect
       ->toMatchSnapshot
     )
@@ -213,7 +217,7 @@ describe("ReactTestingLibrary", (. ()) => {
     test("queryByAltText works", (. ()) =>
       altText
       ->render
-      ->queryByAltText(~matcher=#Str("Incredibles 2 Poster"))
+      ->queryByAltText(~matcher=#Str("Incredibles 2 Poster"), ())
       ->expect
       ->toMatchSnapshot
     )
@@ -221,7 +225,7 @@ describe("ReactTestingLibrary", (. ()) => {
     test("queryByAltText works (element not found)", (. ()) =>
       altText
       ->render
-      ->queryByAltText(~matcher=#Str("!@#$Incredibles 2 Poster!@#$"))
+      ->queryByAltText(~matcher=#Str("!@#$Incredibles 2 Poster!@#$"), ())
       ->expect
       ->toMatchSnapshot
     )
@@ -229,7 +233,7 @@ describe("ReactTestingLibrary", (. ()) => {
     test("queryAllByAltText works", (. ()) =>
       altText
       ->render
-      ->queryAllByAltText(~matcher=#Str("Incredibles 2 Poster"))
+      ->queryAllByAltText(~matcher=#Str("Incredibles 2 Poster"), ())
       ->expect
       ->toMatchSnapshot
     )
@@ -237,14 +241,14 @@ describe("ReactTestingLibrary", (. ()) => {
     testAsync("findByAltText works", (. ()) =>
       altText
       ->render
-      ->findByAltText(~matcher=#Str("Incredibles 2 Poster"))
+      ->findByAltText(~matcher=#Str("Incredibles 2 Poster"), ())
       ->Promise.thenResolve(result => result->expect->toMatchSnapshot)
     )
 
     testAsync("findAllByAltText works", (. ()) =>
       altText
       ->render
-      ->findAllByAltText(~matcher=#Str("Incredibles 2 Poster"))
+      ->findAllByAltText(~matcher=#Str("Incredibles 2 Poster"), ())
       ->Promise.thenResolve(result => result->expect->toMatchSnapshot)
     )
   })
@@ -258,36 +262,36 @@ describe("ReactTestingLibrary", (. ()) => {
       </div>
 
     test("getByTitle works", (. ()) =>
-      title->render->getByTitle(~matcher=#Str("Delete"))->expect->toMatchSnapshot
+      title->render->getByTitle(~matcher=#Str("Delete"), ())->expect->toMatchSnapshot
     )
 
     test("getAllByTitle works", (. ()) =>
-      title->render->getAllByTitle(~matcher=#Str("Delete"))->expect->toMatchSnapshot
+      title->render->getAllByTitle(~matcher=#Str("Delete"), ())->expect->toMatchSnapshot
     )
 
     test("queryByTitle works", (. ()) =>
-      title->render->queryByTitle(~matcher=#Str("Delete"))->expect->toMatchSnapshot
+      title->render->queryByTitle(~matcher=#Str("Delete"), ())->expect->toMatchSnapshot
     )
 
     test("queryByTitle works (element not found)", (. ()) =>
-      title->render->queryByTitle(~matcher=#Str("!@#$Delete!@#$"))->expect->toMatchSnapshot
+      title->render->queryByTitle(~matcher=#Str("!@#$Delete!@#$"), ())->expect->toMatchSnapshot
     )
 
     test("queryAllByTitle works", (. ()) =>
-      title->render->queryAllByTitle(~matcher=#Str("Delete"))->expect->toMatchSnapshot
+      title->render->queryAllByTitle(~matcher=#Str("Delete"), ())->expect->toMatchSnapshot
     )
 
     testAsync("findByTitle works", (. ()) =>
       title
       ->render
-      ->findByTitle(~matcher=#Str("Delete"))
+      ->findByTitle(~matcher=#Str("Delete"), ())
       ->Promise.thenResolve(result => result->expect->toMatchSnapshot)
     )
 
     testAsync("findAllByTitle works", (. ()) =>
       title
       ->render
-      ->findAllByTitle(~matcher=#Str("Delete"))
+      ->findAllByTitle(~matcher=#Str("Delete"), ())
       ->Promise.thenResolve(result => result->expect->toMatchSnapshot)
     )
   })
@@ -297,36 +301,40 @@ describe("ReactTestingLibrary", (. ()) => {
     let title = <div> <input type_="text" id="lastName" defaultValue="ReasonML" /> </div>
 
     test("getByDisplayValue works", (. ()) =>
-      title->render->getByDisplayValue(~matcher=#Str("ReasonML"))->expect->toMatchSnapshot
+      title->render->getByDisplayValue(~matcher=#Str("ReasonML"), ())->expect->toMatchSnapshot
     )
 
     test("getAllByDisplayValue works", (. ()) =>
-      title->render->getAllByDisplayValue(~matcher=#Str("ReasonML"))->expect->toMatchSnapshot
+      title->render->getAllByDisplayValue(~matcher=#Str("ReasonML"), ())->expect->toMatchSnapshot
     )
 
     test("queryByDisplayValue works", (. ()) =>
-      title->render->queryByDisplayValue(~matcher=#Str("ReasonML"))->expect->toMatchSnapshot
+      title->render->queryByDisplayValue(~matcher=#Str("ReasonML"), ())->expect->toMatchSnapshot
     )
 
     test("queryByDisplayValue works (element not found)", (. ()) =>
-      title->render->queryByDisplayValue(~matcher=#Str("!@#$ReasonML!@#$"))->expect->toMatchSnapshot
+      title
+      ->render
+      ->queryByDisplayValue(~matcher=#Str("!@#$ReasonML!@#$"), ())
+      ->expect
+      ->toMatchSnapshot
     )
 
     test("queryAllByDisplayValue works", (. ()) =>
-      title->render->queryAllByDisplayValue(~matcher=#Str("ReasonML"))->expect->toMatchSnapshot
+      title->render->queryAllByDisplayValue(~matcher=#Str("ReasonML"), ())->expect->toMatchSnapshot
     )
 
     testAsync("findByDisplayValue works", (. ()) =>
       title
       ->render
-      ->findByDisplayValue(~matcher=#Str("ReasonML"))
+      ->findByDisplayValue(~matcher=#Str("ReasonML"), ())
       ->Promise.thenResolve(result => result->expect->toMatchSnapshot)
     )
 
     testAsync("findAllByDisplayValue works", (. ()) =>
       title
       ->render
-      ->findAllByDisplayValue(~matcher=#Str("ReasonML"))
+      ->findAllByDisplayValue(~matcher=#Str("ReasonML"), ())
       ->Promise.thenResolve(result => result->expect->toMatchSnapshot)
     )
   })
@@ -340,36 +348,36 @@ describe("ReactTestingLibrary", (. ()) => {
       </div>
 
     test("getByRole works", (. ()) =>
-      role->render->getByRole(~matcher=#Str("button"))->expect->toMatchSnapshot
+      role->render->getByRole(~matcher=#Str("button"), ())->expect->toMatchSnapshot
     )
 
     test("getAllByRole works", (. ()) =>
-      role->render->getAllByRole(~matcher=#Str("button"))->expect->toMatchSnapshot
+      role->render->getAllByRole(~matcher=#Str("button"), ())->expect->toMatchSnapshot
     )
 
     test("queryByRole works", (. ()) =>
-      role->render->queryByRole(~matcher=#Str("button"))->expect->toMatchSnapshot
+      role->render->queryByRole(~matcher=#Str("button"), ())->expect->toMatchSnapshot
     )
 
     test("queryByRole works (element not found)", (. ()) =>
-      role->render->queryByRole(~matcher=#Str("!@#$button!@#$"))->expect->toMatchSnapshot
+      role->render->queryByRole(~matcher=#Str("!@#$button!@#$"), ())->expect->toMatchSnapshot
     )
 
     test("queryAllByRole works", (. ()) =>
-      role->render->queryAllByRole(~matcher=#Str("button"))->expect->toMatchSnapshot
+      role->render->queryAllByRole(~matcher=#Str("button"), ())->expect->toMatchSnapshot
     )
 
     testAsync("findByRole works", (. ()) =>
       role
       ->render
-      ->findByRole(~matcher=#Str("button"))
+      ->findByRole(~matcher=#Str("button"), ())
       ->Promise.thenResolve(result => result->expect->toMatchSnapshot)
     )
 
     testAsync("findAllByRole works", (. ()) =>
       role
       ->render
-      ->findAllByRole(~matcher=#Str("button"))
+      ->findAllByRole(~matcher=#Str("button"), ())
       ->Promise.thenResolve(result => result->expect->toMatchSnapshot)
     )
   })
@@ -377,36 +385,40 @@ describe("ReactTestingLibrary", (. ()) => {
   // ByTestId
   describe("ByTestId", (. ()) => {
     test("getByTestId works", (. ()) =>
-      element->render->getByTestId(~matcher=#Str("h1-heading"))->expect->toMatchSnapshot
+      element->render->getByTestId(~matcher=#Str("h1-heading"), ())->expect->toMatchSnapshot
     )
 
     test("getAllByTestId works", (. ()) =>
-      element->render->getAllByTestId(~matcher=#Str("h1-heading"))->expect->toMatchSnapshot
+      element->render->getAllByTestId(~matcher=#Str("h1-heading"), ())->expect->toMatchSnapshot
     )
 
     test("queryByTestId works", (. ()) =>
-      element->render->queryByTestId(~matcher=#Str("h1-heading"))->expect->toMatchSnapshot
+      element->render->queryByTestId(~matcher=#Str("h1-heading"), ())->expect->toMatchSnapshot
     )
 
     test("queryByTestId works (element not found)", (. ()) =>
-      element->render->queryByTestId(~matcher=#Str("!@#$h1-heading!@#$"))->expect->toMatchSnapshot
+      element
+      ->render
+      ->queryByTestId(~matcher=#Str("!@#$h1-heading!@#$"), ())
+      ->expect
+      ->toMatchSnapshot
     )
 
     test("queryAllByTestId works", (. ()) =>
-      element->render->queryAllByTestId(~matcher=#Str("h1-heading"))->expect->toMatchSnapshot
+      element->render->queryAllByTestId(~matcher=#Str("h1-heading"), ())->expect->toMatchSnapshot
     )
 
     testAsync("findByTestId works", (. ()) =>
       element
       ->render
-      ->findByTestId(~matcher=#Str("h1-heading"))
+      ->findByTestId(~matcher=#Str("h1-heading"), ())
       ->Promise.thenResolve(result => result->expect->toMatchSnapshot)
     )
 
     testAsync("findAllByTestId works", (. ()) =>
       element
       ->render
-      ->findAllByTestId(~matcher=#Str("h1-heading"))
+      ->findAllByTestId(~matcher=#Str("h1-heading"), ())
       ->Promise.thenResolve(result => result->expect->toMatchSnapshot)
     )
   })
@@ -477,11 +489,11 @@ describe("ReactTestingLibrary", (. ()) => {
     let result = <Counter />->render
 
     act(() => {
-      let el = result->getByText(~matcher=#Str("+"))
+      let el = result->getByText(~matcher=#Str("+"), ())
       fireEvent->click(el)->ignore
     })
 
-    result->getByText(~matcher=#Str("Count: 1"))->expect->toMatchSnapshot
+    result->getByText(~matcher=#Str("Count: 1"), ())->expect->toMatchSnapshot
   })
 
   testAsync("Cleaunp, (element not found)", (. ()) => {
@@ -489,6 +501,6 @@ describe("ReactTestingLibrary", (. ()) => {
 
     cleanup()
 
-    Promise.resolve(result->queryByTestId(~matcher=#Str("h1-heading"))->expect->toMatchSnapshot)
+    Promise.resolve(result->queryByTestId(~matcher=#Str("h1-heading"), ())->expect->toMatchSnapshot)
   })
 })

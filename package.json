@@ -30,7 +30,8 @@
   ],
   "dependencies": {
     "@ryyppy/rescript-promise": "^2.1.0",
-    "@testing-library/react": "^11.1.0"
+    "@testing-library/react": "^11.1.0",
+    "bs-dom-testing-library": "^0.7.0"
   },
   "peerDependencies": {
     "@rescript/react": "<0.10.1"
