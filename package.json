@@ -14,10 +14,10 @@
     "bsconfig.json"
   ],
   "scripts": {
-    "build": "rescript build -with-deps",
-    "watch": "rescript build -w",
-    "clean": "rescript clean",
-    "format": "rescript format",
+    "rescript:build": "rescript build -with-deps",
+    "rescript:dev": "rescript build -w",
+    "rescript:clean": "rescript clean",
+    "rescript:format": "rescript format",
     "test": "jest",
     "test:watch": "jest --watch"
   },
